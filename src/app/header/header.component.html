@@ -1,0 +1,31 @@
+<!-- we create a toolbar to hold the toolbar items -->
+
+<mat-toolbar>
+  <mat-toolbar-row class="justify-content-between">
+    <button mat-icon-button (click)="toggleSidebar()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <!-- we create a user panel on the right of the toolbar -->
+    <div class="row mr-2 ml-auto">
+      <ul class="row text-center">
+        <li>
+          <button mat-button [matMenuTriggerFor]="menu">
+            <img src="/assets/user.jpg" alt="" class="user-image" />User Name
+            <mat-icon class="user-image-icon">keyboard_arrow_down</mat-icon>
+          </button>
+          <!-- create a drop down menu -->
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>exit_to_app</mat-icon>
+              Logout
+            </button>
+            <button mat-menu-item>
+              <mat-icon>person_pin</mat-icon>
+              Profile
+            </button>
+          </mat-menu>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

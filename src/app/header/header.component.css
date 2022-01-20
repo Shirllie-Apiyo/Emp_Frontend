@@ -1,0 +1,24 @@
+.user-image{
+    border-radius: 50%;
+    width:50px;
+    height:50px;
+}
+.user-image-icon{
+    height: 18px;
+    font-size: 16px;
+}
+mat-toolbar{
+    position: sticky;
+    top:0;
+    background-color: aliceblue;
+    padding-top: 1%;
+
+}
+ul li{
+    list-style: none;
+}
+button{
+    outline:none;
+    border: none;
+    background: transparent;
+}

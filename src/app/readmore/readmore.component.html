@@ -1,0 +1,41 @@
+
+
+<div class="container">
+    <h4 class="text-muted">Employee Details</h4>
+    <section class="row">
+        <div class="col-md-6" style="padding: 5%;">
+            <b>Full Name:</b> 
+            <span class="">
+                {{httpdata.surname}}, &nbsp; &nbsp;
+                {{httpdata.first_name}} &nbsp; &nbsp;
+                {{httpdata.last_name}}<br>
+            </span>    
+                <div class="card">
+                    <b>Phone</b> <span class="text-muted">{{httpdata.phone}}</span>
+                    <br>
+                    <b>Department</b> <span>{{httpdata.department}}</span>
+                </div>
+        </div>
+        <div class="col-md-6" style="padding: 5%;">
+            <div class="card">
+                <h3>More Details</h3>
+                <b>Residence: {{httpdata.residence}}</b><br>
+                <b>Id Number: {{httpdata.id_number}}</b> <br>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<!-- {{httpdata.first_name}}
+{{httpdata.last_name}}
+{{httpdata.surname}}
+{{httpdata.gender}}
+{{httpdata.phone}}
+{{httpdata.id_number}}
+{{httpdata.department}}
+{{httpdata.residence}}
+{{httpdata.qualification}}
+{{httpdata.email}} -->
+

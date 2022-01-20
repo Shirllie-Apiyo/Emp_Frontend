@@ -1,0 +1,54 @@
+<div class="container-fluid page">
+  <div class="page_box">Home</div>
+  <br />
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <section class="col-md-12">
+          <table class="table table-stripped" width="100%">
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Surname</th>
+                <th>Gender</th>
+                <th>Phone</th>
+                <th>Dept.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of httpdata">
+                <td>{{ row.first_name }}</td>
+                <td>{{ row.last_name }}</td>
+                <td>{{ row.surname }}</td>
+                <td>{{ row.gender }}</td>
+                <td>{{ row.phone }}</td>
+                <td>{{ row.department }}</td>
+                <td>
+                  <!-- we click readmore we call employeed and provide and an id -->
+                  <a href="/employees/{{ row._id }}" class="btn btn-warning"
+                    >READ MORE</a
+                  >
+                </td>
+                <td>
+                  <!-- delete happens in this current ts file -->
+                  <!-- we need to create a delete function in this ts file -->
+                  <a (click)="delete(row._id)" class="btn btn-danger">DELETE</a>
+                </td>
+                <td>
+                  <!-- delete happens in this current ts file -->
+                  <!-- we need to create a delete function in this ts file -->
+                  <a
+                    href="/employeeupdate/{{ row._id }}"
+                    class="btn btn-warning"
+                    >UPDATE</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,243 @@
+<div class="container">
+  <h3>Add Employee</h3>
+  <section class="row">
+    <div class="col-md-6">
+      <div *ngIf="successmessage" class="alert alert-success">
+        <span>Warning, {{ successmessage | json }}</span>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <section class="row">
+          <div class="col-md-6">
+            <div class="form-group form-floating mb-3">
+              <input
+                id="floatingInput"
+                type="text"
+                formControlName="first_name"
+                placeholder="Emp First Name"
+                class="form-control"
+              />
+              <label for="floatingInput">Emp First Name</label>
+            </div>
+            <!-- <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+              </div> -->
+            <div *ngIf="firstnameerror" class="alert alert-danger">
+              <span>Warning, {{ firstnameerror | json }}</span>
+            </div>
+            <span
+              class="text-danger"
+              *ngIf="
+                registerFormControl.first_name.invalid &&
+                registerFormControl.first_name.errors?.required
+              "
+            >
+              First Name is Required
+            </span>
+            <span
+              class="text-danger"
+              *ngIf="
+                registerFormControl.first_name.invalid &&
+                registerFormControl.first_name.errors?.maxlength
+              "
+            >
+              Maximum Length is 10 characters
+            </span>
+            <div class="form-group form-floating mb-3">
+              <input
+                id="floatingInput"
+                type="text"
+                formControlName="last_name"
+                placeholder="Emp Last Name"
+                class="form-control"
+              />
+              <label for="floatingInput">Emp Last Name</label>
+            </div>
+            <!-- last name validator for express api for last name -->
+            <div *ngIf="lastnameerror" class="alert alert-danger">
+              <span>Warning, {{ lastnameerror | json }}</span>
+            </div>
+            <!-- angular validation for last name -->
+            <span
+              class="text-danger"
+              *ngIf="
+                registerFormControl.last_name.dirty &&
+                registerFormControl.last_name.errors?.required
+              "
+            >
+              Last Name is Required
+            </span>
+            <span
+              class="text-danger"
+              *ngIf="
+                registerFormControl.last_name.dirty &&
+                registerFormControl.last_name.errors?.maxlength
+              "
+            >
+              Maximum Length is 10 characters
+            </span>
+            <div class="form-group form-floating mb-3">
+              <input
+                type="text"
+                formControlName="surname"
+                placeholder="Emp Surname"
+                class="form-control"
+              />
+              <label for="floatingInput">Emp Surname</label>
+            </div>
+            <div *ngIf="surnameerror" class="alert alert-danger">
+              <span>Warning, {{ surnameerror | json }}</span>
+            </div>
+            <div class="form-group form-floating mb-3">
+              <input
+                id="floatingInput"
+                type="email"
+                formControlName="email"
+                placeholder="Emp Email"
+                class="form-control"
+              />
+              <label for="floatingInput">Emp Email</label>
+            </div>
+            <div *ngIf="emailerror" class="alert alert-danger">
+              <span>Warning, {{ emailerror | json }}</span>
+            </div>
+            <!-- angular email validation -->
+            <span
+              class="text-danger"
+              *ngIf="
+                registerFormControl.email.dirty &&
+                registerFormControl.email.errors?.required
+              "
+            >
+              Email is Required
+            </span>
+            <span
+              class="text-danger"
+              *ngIf="
+                registerFormControl.email.dirty &&
+                registerFormControl.email.errors?.maxlength
+              "
+            >
+              Maximum Length is 10 characters
+            </span>
+            <span
+              class="text-danger"
+              *ngIf="
+                registerFormControl.email.dirty &&
+                registerFormControl.email.errors?.email
+              "
+            >
+              Enter a valid email
+            </span>
+            <div class="form-group form-floating mb-3">
+              <input
+                id="floatingInput"
+                type="text"
+                formControlName="id_number"
+                placeholder="Emp ID -XX-XXXX"
+                class="form-control"
+              />
+              <label for="floatingInput">Emp ID -XX-XXXX</label>
+            </div>
+            <div *ngIf="iderror" class="alert alert-danger">
+              <span>Warning, {{ iderror | json }}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group form-floating mb-3">
+              <input
+                id="floatingInput"
+                type="tel"
+                formControlName="phone"
+                placeholder="Emp Phone - +2547xxxxxxxx"
+                class="form-control"
+              />
+              <label for="floatingInput">Emp Phone - +2547xxxxxxxx</label>
+            </div>
+            <div *ngIf="phoneerror" class="alert alert-danger">
+              <span>Warning, {{ phoneerror | json }}</span>
+            </div>
+            <span
+              class="text-danger"
+              *ngIf="
+                registerFormControl.phone.dirty &&
+                registerFormControl.phone.errors?.required
+              "
+            >
+              Phone is Required
+            </span>
+            <span
+              class="text-danger"
+              *ngIf="
+                registerFormControl.phone.dirty &&
+                registerFormControl.phone.errors?.maxlength
+              "
+            >
+              Maximum Length is 10 characters
+            </span>
+            <span
+              class="text-danger"
+              *ngIf="
+                registerFormControl.phone.dirty &&
+                registerFormControl.phone.errors?.pattern
+              "
+            >
+              Maximum should be 13 0 - 9
+            </span>
+            <div class="form-group mb-3">
+              <label for="">Emp Gender</label><br />
+              <input type="radio" formControlName="gender" value="Male" />Male
+              <input
+                type="radio"
+                formControlName="gender"
+                value="Female"
+              />Female
+            </div>
+            <div *ngIf="gendererror" class="alert alert-danger">
+              <span>Warning, {{ gendererror | json }}</span>
+            </div>
+            <div class="form-group form-floating mb-3">
+              <input
+                id="floatingInput"
+                type="text"
+                formControlName="department"
+                placeholder="Emp Department"
+                class="form-control"
+              />
+              <label for="floatingInput">Emp Department</label>
+            </div>
+            <div *ngIf="departmenterror" class="alert alert-danger">
+              <span>Warning, {{ departmenterror | json }}</span>
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                formControlName="qualification"
+                placeholder="Qualification"
+                class="form-control"
+              />
+            </div>
+            <div *ngIf="qualificationerror" class="alert alert-danger">
+              <span>Warning, {{ qualificationerror | json }}</span>
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                formControlName="residence"
+                placeholder="Emp Residence"
+                class="form-control"
+              />
+            </div>
+            <div *ngIf="residenceerror" class="alert alert-danger">
+              <span>Warning, {{ residenceerror | json }}</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="form-group">
+          <button class="btn btn-info">Add Employee</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>

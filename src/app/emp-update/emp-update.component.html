@@ -1,0 +1,21 @@
+<div class="container">
+    <section class="row">
+        <div class="col-md-6">
+            <form [formGroup] = "form" (ngSubmit)= "submitForm()">
+                <div class="form-group">
+                    <label for="">Current Department: {{httpdata.department}}</label><br>
+                    <input type="text" value="{{httpdata.department}}" formControlName="department" class="form-control">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success">UPDATE RECORD</button>
+                </div>
+                <div *ngIf = "successmessage" class="alert alert-success">
+                    <span>Warning, {{successmessage}}</span>
+                </div>
+                <div *ngIf = "errormessage" class="alert alert-success">
+                    <span>Error, {{errormessage}}</span>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
