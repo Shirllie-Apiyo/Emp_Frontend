@@ -1,6 +1,15 @@
 .title{
     font-size: 28px;
 }
-.mat-card{
+.mat-card1{
     border-left: 2px  blue solid;
+}
+.mat-card2{
+    border-left: 2px  orange solid;
+}
+.mat-card3{
+    border-left: 2px  purple solid;
+}
+.mat-card4{
+    border-left: 2px  lightseagreen solid;
 }
