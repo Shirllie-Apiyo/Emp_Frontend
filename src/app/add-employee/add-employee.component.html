@@ -18,10 +18,6 @@
               />
               <label for="floatingInput">Emp First Name</label>
             </div>
-            <!-- <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Email address</label>
-              </div> -->
             <div *ngIf="firstnameerror" class="alert alert-danger">
               <span>Warning, {{ firstnameerror | json }}</span>
             </div>
@@ -209,24 +205,28 @@
             <div *ngIf="departmenterror" class="alert alert-danger">
               <span>Warning, {{ departmenterror | json }}</span>
             </div>
-            <div class="form-group">
+            <div class="form-group form-floating mb-3">
               <input
+                id="floatingInput"
                 type="text"
                 formControlName="qualification"
                 placeholder="Qualification"
                 class="form-control"
               />
+              <label for="floatingInput">Qualification</label>
             </div>
             <div *ngIf="qualificationerror" class="alert alert-danger">
               <span>Warning, {{ qualificationerror | json }}</span>
             </div>
-            <div class="form-group">
+            <div class="form-group form-floating mb-3">
               <input
+                id="floatingInput"
                 type="text"
                 formControlName="residence"
                 placeholder="Emp Residence"
                 class="form-control"
               />
+              <label for="floatingInput">Emp Residence</label>
             </div>
             <div *ngIf="residenceerror" class="alert alert-danger">
               <span>Warning, {{ residenceerror | json }}</span>
@@ -235,7 +235,7 @@
         </section>
 
         <div class="form-group">
-          <button class="btn btn-info">Add Employee</button>
+          <button class="btn btn-info w-100">Add Employee</button>
         </div>
       </form>
     </div>
