@@ -116,6 +116,21 @@
           </canvas>
           </div>
       </div>
+      <div class="col-md-6">
+        <div class="chart-wrapper">
+          <canvas
+            baseChart
+            [chartType]="pieChartType"
+            [datasets]="pieChartData"
+            [labels]="pieChartLabels"
+            [options]="pieChartOptions"
+            [legend]="true"
+            [colors]="pieChartColor"
+            (chartClick)="onChartClick($event)">
+          </canvas>
+        </div>
+      </div>
     </div>
   </section>
+ 
 </div>
