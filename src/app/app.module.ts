@@ -28,6 +28,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReportsComponent } from './reports/reports.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import { ReportsComponent } from './reports/reports.component';
     HeaderComponent,
     SidenavComponent,
     DashboardComponent,
-    ReportsComponent
+    ReportsComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,

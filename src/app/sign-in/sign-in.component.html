@@ -1,0 +1,38 @@
+<div class="container">
+    <h3>Sign-In</h3>
+    <section class="row">
+      <div class="col-md-6">
+        <div *ngIf="successmessage" class="alert alert-success">
+          <span>Warning, {{ successmessage | json }}</span>
+        </div>
+        <div *ngIf="loginerror" class="alert alert-success">
+          <span>Warning, {{ loginerror | json }}</span>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="submitForm()">
+            <div class="col-md-6">
+                <div class="form-group form-floating mb-3">
+                    <input type="text" id="floatingInput" formControlName="email" placeholder="Your Email" class="form-control">
+                <label for="floatingInput">Email</label>
+                </div>
+                <!-- <div *ngIf="emailerror" class="alert alert-danger">
+                  <span>Warning, {{ emailerror | json }}</span>
+                </div> -->
+                <div class="form-group form-floating mb-3">
+                    <input type="password" id="floatingInput2" formControlName="password" placeholder="Your Password" class="form-control">
+                    <label for="floatingInput">Password</label>
+                </div>
+                <!-- <div *ngIf="passworderror" class="alert alert-danger">
+                  <span>Warning, {{ passworderror | json }}</span>
+                </div> -->
+                <div class="form-group">
+                    <!-- <input type="submit" value="Sign-In" class="btn btn-info" > -->
+                    <button type="submit" value="Sign-In" class="btn btn-info w-100" >
+                        SignIn
+                    </button>
+                </div>
+            </div>
+        </form>
+      </div>
+    </section>
+  </div>
+  
