@@ -3,6 +3,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { ChartDataSets, ChartOptions, ChartType, Chart } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -28,7 +31,7 @@ export class DashboardComponent implements OnInit {
   lineChartPlugins = [];
   lineChartType: ChartType = "doughnut";  //can change to 'line'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router, private authService: AuthService) { }
   pieChartOptions = {
     responsive: true
   }
@@ -51,24 +54,30 @@ export class DashboardComponent implements OnInit {
     }
   ];
   ngOnInit(): void {
-    this.http.get('http://127.0.0.1:5000/api/pie', { responseType: 'json' }).subscribe(
-      data => {
-        this.pieChartData = data as any[];// fill the chart array with data
-      },
-      (err: HttpErrorResponse) => {
-        console.log(err.message);
-      }
-    );
+    if (!this.authService.isLoggedIn) {
+      this.router.navigate(['signin'])
+    }
+    else {
+      this.http.get('http://127.0.0.1:5000/api/pie', { responseType: 'json' }).subscribe(
+        data => {
+          this.pieChartData = data as any[];// fill the chart array with data
+        },
+        (err: HttpErrorResponse) => {
+          console.log(err.message);
+        }
+      );
 
 
-    let API_URL = `http://127.0.0.1:5000/api/countEmployees`
-    this.http.get(API_URL)
-      .subscribe((data) => this.displaydata(data));
+      let API_URL = `http://127.0.0.1:5000/api/countEmployees`
+      this.http.get(API_URL)
+        .subscribe((data) => this.displaydata(data));
 
-    let API_URL2 = `http://127.0.0.1:5000/api/countDepartments`
-    this.http.get(API_URL2)
-      .subscribe((data) => this.displaydata2(data));
-  }// end
+      let API_URL2 = `http://127.0.0.1:5000/api/countDepartments`
+      this.http.get(API_URL2)
+        .subscribe((data) => this.displaydata2(data));
+    }//else
+  }// end ngoninit
+
 
   onChartClick(event: any) {
     console.log(event);
