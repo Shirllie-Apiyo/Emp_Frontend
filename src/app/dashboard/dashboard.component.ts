@@ -56,6 +56,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     if (!this.authService.isLoggedIn) {
       this.router.navigate(['signin'])
+      console.log("not logged in")
     }
     else {
       this.http.get('http://127.0.0.1:5000/api/pie', { responseType: 'json' }).subscribe(
