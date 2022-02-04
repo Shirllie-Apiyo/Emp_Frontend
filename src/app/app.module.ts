@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+// HERE WE ADD HTTP_INTERCEPTORS TO be used in bearer token authorization
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { EmpDetailsComponent } from './emp-details/emp-details.component';
 import { ReadmoreComponent } from './readmore/readmore.component';
@@ -29,6 +30,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReportsComponent } from './reports/reports.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { AuthInterceptor } from './interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +62,14 @@ import { SignInComponent } from './sign-in/sign-in.component';
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [],
+  // put HTTP_INTERCEPTORS
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true // allow use in multiple endpoints
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

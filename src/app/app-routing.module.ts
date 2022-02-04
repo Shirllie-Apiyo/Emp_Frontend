@@ -6,13 +6,14 @@ import { EmpUpdateComponent } from './emp-update/emp-update.component';
 import { ReadmoreComponent } from './readmore/readmore.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { AuthGuard } from './authGuard';
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'employees', component: EmpDetailsComponent },
 
   // below route should be given an id
   { path: 'employees/:id', component: ReadmoreComponent },
-  { path: 'add', component: AddEmployeeComponent },
+  { path: 'add', component: AddEmployeeComponent, canActivate: [AuthGuard] },
   { path: 'employeeupdate/:id', component: EmpUpdateComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'signin', component: SignInComponent }

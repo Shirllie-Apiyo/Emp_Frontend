@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { AuthService } from '../auth';
 
 @Component({
   selector: 'app-sign-in',
@@ -13,6 +13,7 @@ export class SignInComponent implements OnInit {
   form: FormGroup
 
   constructor(
+    private authService: AuthService,
     public fb: FormBuilder,
     private http: HttpClient, private router: Router) {
     this.form = this.fb.group({
@@ -55,6 +56,11 @@ export class SignInComponent implements OnInit {
   }//end submit
 
   ngOnInit(): void {
+    if (this.authService.isLoggedIn) {
+      this.router.navigate(['/dashboard'])
+    } else {
+      this.router.navigate(['signin'])
+    }
 
     // this.form = this.fb.group({
     //   email: ['', [Validators.required, Validators.email, Validators.maxLength(15)]],

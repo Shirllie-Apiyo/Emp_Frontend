@@ -17,6 +17,9 @@ export class HeaderComponent implements OnInit {
   toggleSidebar() {
     this.toggleSidebarForMe.emit();
   }
+  isLogged(): Boolean {
+    return this.authService.isLoggedIn
+  }
   Logout() {
     this.authService.doLogout()
   }
